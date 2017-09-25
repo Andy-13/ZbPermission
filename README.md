@@ -1,4 +1,5 @@
 # ZbPermission
+
 Android 8.0 7.0 6.0 动态权限管理
 1.Android6.0之后运行时权限策略变化
 
@@ -272,3 +273,5 @@ public class MainActivity extends AppCompatActivity{
 
 6.如果觉得这里描述的不够详细，可以查看demo，也可以参考我的博客
  http://blog.csdn.net/sinat_30472685/article/details/78071494
+ 
+ 谢谢观看，希望可以帮助到你，也感谢其他程序猿/媛的分享！
