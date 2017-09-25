@@ -145,15 +145,21 @@ dependencies {
  ZbPermission.with(MainActivity.this)
         .addRequestCode(REQUEST_CONTACT)
         .permissions(Manifest.permission.READ_CONTACTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.WRITE_CONTACTS)
-        .request(/*new ZbPermission.ZbPermissionCallback() {
+        .request(/*new ZbPermission.ZbPermissionCallback(){
+	
             @Override
             public void permissionSuccess(int requestCode) {
+	    
                 Toast.makeText(MainActivity.this, "成功授予Contact权限: " + requestCode, Toast.LENGTH_SHORT).show();
+		
             }
             @Override
             public void permissionFail(int requestCode) {
+	    
                 Toast.makeText(MainActivity.this, "成功授予Contact拍照权限: " + requestCode, Toast.LENGTH_SHORT).show();
+		
             }
+	    
         }*/);
 
 
@@ -161,20 +167,26 @@ dependencies {
 
  @ZbPermissionSuccess(requestCode = REQUEST_CONTACT)
 public void permissionSuccessContact() {
+
     Toast.makeText(MainActivity.this, "成功授予Contact权限注解" , Toast.LENGTH_SHORT).show();
+    
 }
 
 @ZbPermissionFail(requestCode = REQUEST_CONTACT)
 public void permissionFailContact() {
+
     Toast.makeText(MainActivity.this, "授予Contact权限失败注解" , Toast.LENGTH_SHORT).show();
+    
 }
 
 申请权限的系统回调方法:
 
  @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     ZbPermission.onRequestPermissionsResult(MainActivity.this, requestCode, permissions, grantResults);
+    
 }
 
 
