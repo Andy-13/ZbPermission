@@ -152,7 +152,17 @@ public final class Permission {
 * 首先添加依赖：
 
 ```Java
-dependencies {
+Step 1.Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
 	        compile 'com.github.Andy-13:ZbPermission:1.0.0'
 	}
  
