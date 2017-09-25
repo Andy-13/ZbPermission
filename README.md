@@ -123,8 +123,10 @@ public final class Permission {
 }
 在Android M以前使用某权限是不需要用户授权的，只要在Manifest中注册即可，在Android M之后需要注册并申请用户授权，所以我们根据系统版本在Android M以前用一个空数组作为权限组，在Android M以后用真实数组权限。
 
+
 5.接下来用我自己封装的一个权限框架给大家演示
 动态申请拍照权限：
+
 
  ZbPermission.with(MainActivity.this)
         .addRequestCode(REQUEST_CONTACT)
@@ -134,12 +136,12 @@ public final class Permission {
             public void permissionSuccess(int requestCode) {
                 Toast.makeText(MainActivity.this, "成功授予Contact权限: " + requestCode, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void permissionFail(int requestCode) {
                 Toast.makeText(MainActivity.this, "成功授予Contact拍照权限: " + requestCode, Toast.LENGTH_SHORT).show();
             }
         }*/);
+
 
 注解方法(当参数没有接口的时候，就会在当前类里面寻找相应的注解方法）：
 
@@ -162,9 +164,12 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 }
 
 
+
 完整的demo代码：
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity{
+
     private static final String TAG = "MainActivity";
     private final int REQUEST_CONTACT = 50;
     private final int REQUEST_STORAGE = 100;
@@ -172,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bt_request_storage;
     private Button bt_request_camera;
     private Button bt_request_contact;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -261,4 +267,5 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         ZbPermission.onRequestPermissionsResult(MainActivity.this, requestCode, permissions, grantResults);
     }
+   
 }
