@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ZbCode.iml" filepath="$PROJECT_DIR$/../ZbCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zb-zxing/zb-zxing.iml" filepath="$PROJECT_DIR$/../zb-zxing/zb-zxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zb_ble/zb_ble.iml" filepath="$PROJECT_DIR$/../zb_ble/zb_ble.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zb_permission.iml" filepath="$PROJECT_DIR$/zb_permission.iml" />
+    </modules>
+  </component>
+</project>
