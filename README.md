@@ -20,7 +20,7 @@ Android 8.0 7.0 6.0 动态权限管理
 
 危险权限涵盖应用需要涉及用户隐私信息的数据或资源，或者可能对用户存储的数据或其他应用的操作产生影响的区域。例如读取用户联系人，在6.0以上系统中，需要在运行时明确向用户申请权限。
 
-![](https://github.com/Andy-13/ZbPermission/dangerous_permission.png)
+![危险权限](https://github.com/Andy-13/ZbPermission/raw/master/dangerous_permission.png)
 
 3、运行时请求权限
 ---
@@ -41,7 +41,7 @@ int permissionCheck = ContextCompat.checkSelfPermission(thisActivity,    Manifes
 
 ```Java
  ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE);
-```    
+``` 
  
 * 3.3、处理权限请求响应
 
@@ -201,7 +201,7 @@ public void permissionFailContact() {
 }
 ```
 
-*申请权限的系统回调方法:
+* 申请权限的系统回调方法:
 
 ```Java
  @Override
