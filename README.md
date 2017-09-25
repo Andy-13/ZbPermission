@@ -269,3 +269,6 @@ public class MainActivity extends AppCompatActivity{
     }
    
 }
+
+6.如果觉得这里描述的不够详细，可以查看demo，也可以参考我的博客
+ http://blog.csdn.net/sinat_30472685/article/details/78071494
