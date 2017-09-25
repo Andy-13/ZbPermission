@@ -125,6 +125,7 @@ public final class Permission {
 
 5.接下来用我自己封装的一个权限框架给大家演示
 动态申请拍照权限：
+
  ZbPermission.with(MainActivity.this)
         .addRequestCode(REQUEST_CONTACT)
         .permissions(Manifest.permission.READ_CONTACTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.WRITE_CONTACTS)
@@ -141,6 +142,7 @@ public final class Permission {
         }*/);
 
 注解方法(当参数没有接口的时候，就会在当前类里面寻找相应的注解方法）：
+
  @ZbPermissionSuccess(requestCode = REQUEST_CONTACT)
 public void permissionSuccessContact() {
     Toast.makeText(MainActivity.this, "成功授予Contact权限注解" , Toast.LENGTH_SHORT).show();
@@ -150,7 +152,9 @@ public void permissionSuccessContact() {
 public void permissionFailContact() {
     Toast.makeText(MainActivity.this, "授予Contact权限失败注解" , Toast.LENGTH_SHORT).show();
 }
+
 申请权限的回调方法:
+
  @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -159,6 +163,7 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 
 
 完整的demo代码：
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private final int REQUEST_CONTACT = 50;
