@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         bt_request_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //request()有参数ZbPermissionCallback且不为空的时候，权限回调的时候会调用响应的接口的方法。否则调用相应的注解方法
                 ZbPermission.with(MainActivity.this)
                         .addRequestCode(REQUEST_CONTACT)
                         .permissions(Manifest.permission.READ_CONTACTS, Manifest.permission.RECEIVE_SMS, Manifest.permission.WRITE_CONTACTS)
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         bt_request_storage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //needPermission()方法没有ZbPermissionCallback作为参数的时候，回去调用相应的注解方法
                 ZbPermission.needPermission(MainActivity.this, REQUEST_STORAGE, Permission.STORAGE);
             }
         });
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         bt_request_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //needPermission()方法有ZbPermissionCallback对象作为参数且不为空的时候，权限回调的时候会调用相应的接口的方法。否则调用相应的注解方法
                 ZbPermission.needPermission(MainActivity.this, REQUEST_CAMERA, Permission.CAMERA, new ZbPermission.ZbPermissionCallback() {
                     @Override
                     public void permissionSuccess(int requestCode) {
