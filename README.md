@@ -25,26 +25,32 @@ Android 8.0 7.0 6.0 动态权限管理
 应用每次需要危险权限时，都要判断应用目前是否有该权限。兼容库中已经做了封装，只需要通过下面代码即可：
 
 int permissionCheck = ContextCompat.checkSelfPermission(thisActivity,    Manifest.permission.WRITE_CALENDAR);
+
  如果有权限则返回PackageManager.PERMISSION_GRANTED，否则返回PackageManager。PERMISSION_DENIED。
+ 
 3.2、请求权限
 
 当应用需要某个权限时，可以申请获取权限，这时会有弹出一个系统标准Dialog提示申请权限，此Diolog不能定制，用户同意或者拒绝后会通过方法onRequestPermissionsResult()返回结果。
- ActivityCompat.requestPermissions(thisActivity,
-        new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE);
+
+ ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE);
+        
 3.3、处理权限请求响应
 
 当用户处理权限请求后，系统会回调申请权限的Activity的onRequestPermissionsResult()方法，只需要覆盖此方法，就能获得返回结果.
+
  @Override
-public void onRequestPermissionsResult(int requestCode,
-                                       String permissions[], int[] grantResults) {
+public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
  
 }
 
 4.Android O的运行时权限策略变化
 
 4.1在 Android O 之前，如果应用在运行时请求权限并且被授予该权限，系统会错误地将属于同一权限组并且在清单中注册的其他权限也一起授予应用。
+
 4.2对于针对Android O的应用，此行为已被纠正。系统只会授予应用明确请求的权限。然而一旦用户为应用授予某个权限，则所有后续对该权限组中权限的请求都将被自动批准,但是若没有请求相应的权限而进行操作的话就会出现应用crash的情况.
+
 例如，假设某个应用在其清单中列出READ_EXTERNAL_STORAGE和WRITE_EXTERNAL_STORAGE。应用请求READ_EXTERNAL_STORAGE，并且用户授予了该权限，如果该应用针对的是API级别24或更低级别，系统还会同时授予WRITE_EXTERNAL_STORAGE，因为该权限也属于STORAGE权限组并且也在清单中注册过。如果该应用针对的是Android O，则系统此时仅会授予READ_EXTERNAL_STORAGE，不过在该应用以后申请WRITE_EXTERNAL_STORAGE权限时，系统会立即授予该权限，而不会提示用户。但是若没有申请WRITE_EXTERNAL_STORAGE权限，而去进行写存储卡的操作的时候，就会引起应用的崩溃。
+
 4.3对Android O运行时权限策略变化的应对方案
 
 针对Android O 的运行是的权限特点，我们可以在申请权限的时候要申请权限数组，而不是单一的某一个权限。所以按照上面的危险权限列表我们给系统权限进行分类，把一个组的常量放到数组中，并根据系统版本进行赋值。
@@ -271,7 +277,7 @@ public class MainActivity extends AppCompatActivity{
    
 }
 
-6.如果觉得这里描述的不够详细，可以查看demo，也可以参考我的博客
+6.如果觉得这里描述的不够详细，可以查看demo，也可以参考我的博客：
  http://blog.csdn.net/sinat_30472685/article/details/78071494
  
  谢谢观看，希望可以帮助到你，也感谢其他程序猿/媛的分享！
