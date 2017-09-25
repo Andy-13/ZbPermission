@@ -134,6 +134,13 @@ public final class Permission {
 5.接下来用我自己封装的一个权限框架给大家演示
 动态申请拍照权限：
 
+首先添加依赖：
+
+dependencies {
+	        compile 'com.github.Andy-13:ZbPermission:1.0.0'
+	}
+ 
+然后就可以使用框架来动态请求响应的权限啦（可以一个一个权限申请，也可以一组一组权限申请）
 
  ZbPermission.with(MainActivity.this)
         .addRequestCode(REQUEST_CONTACT)
@@ -162,7 +169,7 @@ public void permissionFailContact() {
     Toast.makeText(MainActivity.this, "授予Contact权限失败注解" , Toast.LENGTH_SHORT).show();
 }
 
-申请权限的回调方法:
+申请权限的系统回调方法:
 
  @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
